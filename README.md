@@ -122,24 +122,27 @@
 
 `기초단계에서는 Google Colab 연동과 Google Colab 라이브러리를 활용하는 법을 학습했다.`
 
-![image-20201224104520173](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224104520173.png)
+![image-20201224104520173](README.assets/image-20201224104520173.png)
 
 - Google Colab 상에서 기본적인 코드를 작성해 잘 작동하는지 확인해봤다.
 - 언어는 Python 기반이라 코드를 짜는데 크게 어려움은 없었다.
 
-![image-20201224104739243](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224104739243.png)
+![image-20201224104739243](README.assets/image-20201224104739243.png)
 
 - 다음은 Colab의 `Code Snippet(재활용 코드)` 중에 `Visualization: Linked Brushing in Altair`를 사용해봤다. 우선 data에서 더미 데이터를 가져오고 이 데이터를 시각자료(그래프)로 변환시켜준다.
 - 코드를 보면 x축과 y축, 그래프에 표시되는 데이터들의 형식, 색깔 까지 내가 코드를 수정해 원하는데로 표현할 수 있다.
 
-![image-20201224105617141](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224105617141.png)
+![image-20201224105617141](README.assets/image-20201224105617141.png)
 
 - 다음으로는 `Camera Capture`라이브러리를 이용해 나의 사진을 찍어보았다.
 - 상태가 좋지못해서 모자이크 처리했다.ㅎㅎ!
 
 
 
-![image-20201224105746651](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224105746651.png)
+![image-20201224105746651](README.assets/image-20201224105746651.png)
+
+- 이미지 버퍼에 직접 사각형을 그려주어 출력도 해보았다.
+- 후에 인물 사진 속 인식된 얼굴에 사각형을 그려주기 위한 연습이다.
 
 ---
 
@@ -149,7 +152,7 @@
 
 #### Face Detection
 
-![image-20201224110450624](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224110450624.png)
+![image-20201224110450624](README.assets/image-20201224110450624.png)
 
 - 위와 같이 사진속에 얼굴이라고 인식되는 곳은 cv2를 활용해 사각형을 그려주었다.
 - `face_recogtion`이라는 라이브러리에 `load_image_file`과 `face_locations`라는 함수가 있는데 이는 뒤에서 더 깊게 파헤쳐 볼 거다.
@@ -158,7 +161,7 @@
 
 #### Face Recognition
 
-![image-20201224110841978](인공지능 기반 얼굴인식 프로젝트 README.assets/image-20201224110841978.png)
+![image-20201224110841978](README.assets/image-20201224110841978.png)
 
 - 우선 비교 대상이 되는 인물 4명의 얼굴 사진만 잘라준 후 리스트에 넣어준다. 추가적으로 비교하고 싶은 'unknown'  의 얼굴 사진도 잘라준다. 그 후 각각의 사진들을 `face_recogtion`라이브러리의 `encodings` 를 이용해 라이브러리가 저장하고 비교할 수 있는 데이터 구조로 변환해준다.
 - 이렇게 변환된 데이터을 `face_distace`함수를 이용해 `distance` 값을 계산해준다.
