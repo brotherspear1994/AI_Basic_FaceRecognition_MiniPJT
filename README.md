@@ -214,22 +214,25 @@ def face_locations(img, number_of_times_to_upsample=1, model="hog"):
 ########################################################################################
 
 
-def _trim_css_to_bounds(css, image_shape):
+def _trim_css_to_bounds(css, image_shape): # 인자로 css와 image_shape을 받는다.
+    # css는 rect_to_css 함수의 반환값인 사진의 상하좌우 좌표들이 넘어오게 된다.
     """
     Make sure a tuple in (top, right, bottom, left) order is within the bounds of the image.
     :param css:  plain tuple representation of the rect in (top, right, bottom, left) order
     :param image_shape: numpy shape of the image array
     :return: a trimmed plain tuple representation of the rect in (top, right, bottom, left) order
     """
+    # css 상하좌우 좌표들과 적정 보수들을 max와 min 함수로 정해주고 리턴, 그럼 자를 얼굴(trim) 좌표값들이 나온다.
     return max(css[0], 0), min(css[1], image_shape[1]), min(css[2], image_shape[0]), max(css[3], 0)
 
 
-def _rect_to_css(rect):
+def _rect_to_css(rect): 
     """
     Convert a dlib 'rect' object to a plain tuple in (top, right, bottom, left) order
     :param rect: a dlib 'rect' object
     :return: a plain tuple representation of the rect in (top, right, bottom, left) order
     """
+    # 사각형의 top, right, bottom, left 좌표를 반환
     return rect.top(), rect.right(), rect.bottom(), rect.left()
     
     
